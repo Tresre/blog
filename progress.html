@@ -13,50 +13,32 @@ function isUrl(url) {
   );
 }
 
-function redirect() {
-  var issueNumber = 1;
-
+function getPost(issueNumber) {
   var xhr = new XMLHttpRequest();
-
   xhr.onload = function () {
     try {
       var payload = JSON.parse(xhr.response);
-      var message = payload.body;
       var title = payload.title;
-      var avatar = payload.user;
+      var message = payload.body;
+      var avatar = payload.user.avatar_url;
       var date = payload.created_at;
-      console.log("payload " + payload);
-      console.log("pmessage " + message);
       console.log("title " + title);
+      console.log("pmessage " + message);
       console.log("avatar " + avatar);
       console.log("date " + date);
-
-      var isInvalidUrl =
-        message === "Not Found" ||
-        !title ||
-        !isUrl(title) ||
-        url.hostname === location.hostname;
-
-      if (isInvalidUrl) {
-        console.log("homepage");
-      } else {
-        console.log("title");
-      }
     } catch (e) {
       console.log("homepage");
     }
   };
-
   xhr.onerror = function () {
-    console.log("homepage");
+    console.log("xhr error");
   };
   xhr.open("GET", GITHUB_ISSUES_LINK + issueNumber);
   xhr.send();
   console.log("link " + "GET " + GITHUB_ISSUES_LINK + issueNumber);
-  console.log("xhr " + xhr);
 }
 
-redirect();
+getPost(1);
 </script>
 
 </html>
