@@ -106,15 +106,24 @@ request.onload = function () {
       
       const h2 = document.createElement('h2');
       h2.textContent = post.user.login;
+      
+      const h3 = document.createElement('h3');
+      h3.textContent = post.created_at;
 
       const p = document.createElement('p');
       post.description = post.body;
       p.textContent = `${post.description}...`;
+      
+      const logo = document.createElement('img');
+      avatar = post.user.avatar_url
+	  logo.src = avatar;
 
       container.appendChild(card);
       card.appendChild(h1);
       card.appendChild(p);
       card.appendChild(h2);
+      card.appendChild(h3);
+      card.appendChild(logo);
     });
   } else {
     const errorMessage = document.createElement('marquee');
