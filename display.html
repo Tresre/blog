@@ -108,7 +108,9 @@ request.onload = function () {
       h2.textContent = post.user.login;
       
       const h3 = document.createElement('h3');
-      h3.textContent = post.created_at;
+      date = post.created_at;
+      const splitDate = date.split(":");
+      h3.textContent = splitDate[0].replace("T12", "");
 
       const p = document.createElement('p');
       post.description = post.body;
