@@ -11,7 +11,7 @@
 
 <style>
 * {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 html {
@@ -39,8 +39,7 @@ h1 {
 
 img {
   display: block;
-  margin: 1rem auto;
-  max-width: 100%;
+  width: 15%;
 }
 
 p {
@@ -54,15 +53,14 @@ p {
 
 .card {
   display: block;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin: auto;
+  margin-bottom: 30px;
   background: white;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
   border-radius: 12px;
   overflow: hidden;
   transition: all .2s linear;
+  max-width: 500px;
 }
 
 .card:hover {
@@ -123,10 +121,10 @@ request.onload = function () {
 
       container.appendChild(card);
       card.appendChild(h1);
-      card.appendChild(p);
+      card.appendChild(logo);
       card.appendChild(h2);
       card.appendChild(h3);
-      card.appendChild(logo);
+      card.appendChild(p);
     });
   } else {
     const errorMessage = document.createElement('marquee');
