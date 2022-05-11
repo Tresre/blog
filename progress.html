@@ -2,16 +2,8 @@
 <html>
 
 <script>
-var GITHUB_ISSUES_LINK =
+var issuesLink =
   "https://api.github.com/repos/Tresre/blog/issues/";
-var PATH_SEGMENTS_TO_SKIP = 1;
-
-function isUrl(url) {
-  // Regex from https://stackoverflow.com/a/3809435, with a modification to allow for TLDs of up to 24 characters
-  return /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,24}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)+$/.test(
-    url
-  );
-}
 
 function getPost(issueNumber) {
   var xhr = new XMLHttpRequest();
@@ -20,10 +12,12 @@ function getPost(issueNumber) {
       var payload = JSON.parse(xhr.response);
       var title = payload.title;
       var message = payload.body;
+      var username = payload.user.login;
       var avatar = payload.user.avatar_url;
       var date = payload.created_at;
       console.log("title " + title);
       console.log("pmessage " + message);
+      console.log("username " + username);
       console.log("avatar " + avatar);
       console.log("date " + date);
     } catch (e) {
@@ -33,7 +27,7 @@ function getPost(issueNumber) {
   xhr.onerror = function () {
     console.log("xhr error");
   };
-  xhr.open("GET", GITHUB_ISSUES_LINK + issueNumber);
+  xhr.open("GET", issuesLink + issueNumber);
   xhr.send();
   console.log("link " + "GET " + GITHUB_ISSUES_LINK + issueNumber);
 }
