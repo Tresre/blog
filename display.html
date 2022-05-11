@@ -22,14 +22,6 @@ html {
   background: #1e1e1e;
 }
 
-h1 {
-  text-align: center;
-  background-color: #2196F3;
-  font-size: 24px;
-  color: white;
-  line-height: 1.8;
-}
-
 img {
   position: relative;
   display: block;
@@ -44,6 +36,14 @@ p {
   top: -70px;
   padding: 0px 10px 10px 20px;
   margin: 0;
+}
+
+h1 {
+  text-align: center;
+  background-color: #2196F3;
+  font-size: 24px;
+  color: white;
+  line-height: 1.8;
 }
 
 h2 {
@@ -130,8 +130,7 @@ request.onload = function () {
       h3.textContent = (day + " " + hour[0] + ":" + hour[1]);
 
       const p = document.createElement('p');
-      post.description = post.body;
-      p.textContent = `${post.description}...`;
+      p.textContent = post.body;
       
       const logo = document.createElement('img');
       avatar = post.user.avatar_url
