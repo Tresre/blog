@@ -29,7 +29,6 @@ function getPost(issueNumber) {
   };
   xhr.open("GET", issuesLink + issueNumber);
   xhr.send();
-  console.log("link " + "GET " + GITHUB_ISSUES_LINK + issueNumber);
 }
 
 getPost(1);
