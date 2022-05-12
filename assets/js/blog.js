@@ -1,10 +1,3 @@
-const app = document.getElementById('root');
-
-const container = document.createElement('div');
-container.setAttribute('class', 'container');
-
-app.appendChild(container);
-
 var request = new XMLHttpRequest();
 request.open('GET', 'https://api.github.com/repos/Tresre/blog/issues', true);
 request.onload = function () {
