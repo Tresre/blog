@@ -28,9 +28,11 @@ request.onload = function () {
       time = splitDate[1].substring(0, splitDate[1].length - 3);
       const hour = time.split(":");
       hour[0] = (hour[0] - 4);
-      if (hour[0] > 12) {
+      if (hour[0] >= 12) {
       	var ampm = "pm";
-        hour[0] = (hour[0] - 12);
+	if (hour[0] > 12) {
+          hour[0] = (hour[0] - 12);
+	}
       } else {
       	var ampm = "am";
       }
