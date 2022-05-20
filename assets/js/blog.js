@@ -38,7 +38,7 @@ request.onload = function () {
       h3.textContent = (day + " " + hour[0] + ":" + hour[1] + "" + ampm);
 
       const p = document.createElement('p');
-      p.textContent = post.body;
+      p.textContent = linkify(post.body);
       
       const logo = document.createElement('img');
       avatar = post.user.avatar_url
@@ -59,6 +59,17 @@ request.onload = function () {
 }
 
 request.send();
+
+
+function linkify(input) {
+  var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
+  var pseudoUrlPattern = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
+  var emailAddressPattern = /[\w.]+@[a-zA-Z_-]+?(?:\.[a-zA-Z]{2,6})+/gim;
+  return input
+    .replace(urlPattern, '<a href="$&">$&</a>')
+    .replace(pseudoUrlPattern, '$1<a href="http://$2">$2</a>')
+    .replace(emailAddressPattern, '<a href="mailto:$&">$&</a>');
+}
 
 
 var today = new Date();
