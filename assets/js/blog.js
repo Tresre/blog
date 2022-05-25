@@ -40,7 +40,7 @@ request.onload = function () {
       h3.textContent = (day + " " + hour[0] + ":" + hour[1] + "" + ampm);
 
       const p = document.createElement('p');
-      p = linkify(post.body);
+      p.textContent = linkify(post.body);
       
       const logo = document.createElement('img');
       avatar = post.user.avatar_url
