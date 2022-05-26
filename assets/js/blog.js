@@ -63,7 +63,8 @@ request.onload = function () {
       var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
       const linkslist = body.match(urlPattern);
       for (var i = 0; i < linkslist.length; i++) {
-        if (String(linklist[i]).includes(".png") || String(linklist[i]).includes(".jpg") == true) {
+	var loopValue = String(linkslist[i]);
+        if (loopValue.includes(".png") || loopValue.includes(".jpg") == true) {
 	  console.log("true");
           piclink = linkslist[i];
     	  body = body.replace(linkslist[i], '');
