@@ -63,11 +63,11 @@ request.onload = function () {
       var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
       const linkslist = body.match(urlPattern);
       for (var i = 0; i < linkslist.length; i++) {
-        if (linkslist[i].includes(".png") || linkslist[i].includes(".jpg") == false) {
-          body = body.replace(linkslist[i], '<a href="' + linkslist[i] + '">' + linkslist[i] + '</a>');
-        } else {
-	  piclink = linkslist[i];
+        if (linkslist[i].includes(".png") || linkslist[i].includes(".jpg") == true) {
+          piclink = linkslist[i];
     	  body = body.replace(linkslist[i], '');
+        } else {
+          body = body.replace(linkslist[i], '<a href="' + linkslist[i] + '">' + linkslist[i] + '</a>');
 	}
       }
       p.textContent = body;
