@@ -41,12 +41,11 @@ request.onload = function () {
 
       const p = document.createElement('p');   
       body = post.body;
+      piclink = "";
       if (body.includes(".png") || body.includes(".jpg") == true) {
     	var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
       	piclink = body.match(urlPattern);
     	body = body.replace(urlPattern, '');
-      } else {
-      	piclink = "";
       }
       p.textContent = body;
       
