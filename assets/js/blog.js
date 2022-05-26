@@ -90,18 +90,12 @@ request.send();
 
 
 function linkify(input) {
-  if (input.includes(".png") || input.includes(".jpg") == true) {
-    var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
-    return input
-      .replace(urlPattern, '<img style="width:70%" src="$&"></img><br>');
-  } else {
-    var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
-    var pseudoUrlPattern = /(^|[^\/])(www\.[\S]+(\b|$))/gim;
-    var emailAddressPattern = /[\w.]+@[a-zA-Z_-]+?(?:\.[a-zA-Z]{2,6})+/gim;
-    return input
-      .replace(urlPattern, '<a href="$&">$&</a>')
-      .replace(pseudoUrlPattern, '$1<a href="http://$2">$2</a>')
-      .replace(emailAddressPattern, '<a href="mailto:$&">$&</a>');
+  var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
+  const linkslist = input.match(urlPattern);
+  for (var i = 0; i < linkslist.length; i++) {
+    if (linkslist[i].includes(".png") || linkslist[i].includes(".jpg") == false) {
+      return input.replace(urlPattern, '<a href="$&">$&</a>');
+    }
   }
 }
 
