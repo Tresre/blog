@@ -110,7 +110,7 @@ var today = new Date();
 let year = today.getFullYear();
 document.getElementById("year").innerHTML = year;
 
-document.getElementById("blogowner").innerHTML = blogOwner;
+document.title = (blogOwner + "'s Blog");
 
 function autoScroll() {
   window.scrollTo({
