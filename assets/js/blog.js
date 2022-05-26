@@ -13,12 +13,26 @@ request.onload = function () {
       }
       const card = document.createElement('div');
       card.setAttribute('class', 'card');
+      container.appendChild(card);
 
       const h1 = document.createElement('h1');
       h1.textContent = post.title;
+      card.appendChild(h1);
+	    
+      const logo = document.createElement('img');
+      avatar = post.user.avatar_url;
+      logo.src = avatar;
+      logo.style.position = "relative";
+      logo.style.display = "block";
+      logo.style.width = "70px";
+      logo.style.borderRadius = "100px";
+      logo.style.marginLeft = "10px";
+      logo.style.top = "-73px";
+      card.appendChild(logo);
       
       const h2 = document.createElement('h2');
       h2.textContent = post.user.login;
+      card.appendChild(h2);
       
       const h3 = document.createElement('h3');
       date = post.created_at;
@@ -41,6 +55,7 @@ request.onload = function () {
       }
       
       h3.textContent = (day + " " + hour[0] + ":" + hour[1] + "" + ampm);
+      card.appendChild(h3);
 
       const p = document.createElement('p');   
       body = post.body;
@@ -51,6 +66,7 @@ request.onload = function () {
     	body = body.replace(urlPattern, '');
       }
       p.textContent = body;
+      card.appendChild(p);
       
       const pic = document.createElement('img');
       pic.src = piclink;
@@ -60,24 +76,8 @@ request.onload = function () {
       pic.style.margin = "auto";
       pic.style.borderRadius = "5px";
       pic.style.marginBottom = "30px";
-      
-      const logo = document.createElement('img');
-      avatar = post.user.avatar_url;
-      logo.src = avatar;
-      logo.style.position = "relative";
-      logo.style.display = "block";
-      logo.style.width = "70px";
-      logo.style.borderRadius = "100px";
-      logo.style.marginLeft = "10px";
-      logo.style.top = "-73px";
-
-      container.appendChild(card);
-      card.appendChild(h1);
-      card.appendChild(logo);
-      card.appendChild(h2);
-      card.appendChild(h3);
-      card.appendChild(p);
       if (piclink !== "") {card.appendChild(pic);}
+      
     });
   } else {
     const errorMessage = document.createElement('marquee');
