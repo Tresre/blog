@@ -45,7 +45,8 @@ request.onload = function () {
     	var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
     	body = body.replace(urlPattern, '');
 	const img = document.createElement('img');
-      	img.src = urlPattern;
+	const link = body.match(urlPattern);
+      	img.src = link[0];
       }
       p.textContent = body;
       
