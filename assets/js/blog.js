@@ -64,9 +64,11 @@ request.onload = function () {
       const linkslist = body.match(urlPattern);
       for (var i = 0; i < linkslist.length; i++) {
         if (String(linklist[i]).includes(".png") || String(linklist[i]).includes(".jpg") == true) {
+	  console.log("true");
           piclink = linkslist[i];
     	  body = body.replace(linkslist[i], '');
         } else {
+	  console.log("false");
           body = body.replace(linkslist[i], '<a href="' + linkslist[i] + '">' + linkslist[i] + '</a>');
 	}
       }
