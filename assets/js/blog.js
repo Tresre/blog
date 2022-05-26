@@ -60,10 +60,15 @@ request.onload = function () {
       const p = document.createElement('p');   
       body = post.body;
       piclink = "";
-      if (body.includes(".png") || body.includes(".jpg") == true) {
-    	var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
-      	piclink = body.match(urlPattern);
-    	body = body.replace(urlPattern, '');
+      var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
+      const linkslist = input.match(urlPattern);
+      for (var i = 0; i < linkslist.length; i++) {
+        if (linkslist[i].includes(".png") || linkslist[i].includes(".jpg") == false) {
+          body = body.replace(linkslist[i], '<a href="' + linkslist[i] + '">' + linkslist[i] + '</a>');
+        } else {
+	  piclink = linkslist[i];
+    	  body = body.replace(linkslist[i], '');
+	}
       }
       p.textContent = body;
       card.appendChild(p);
