@@ -61,7 +61,7 @@ request.onload = function () {
       body = post.body;
       piclink = "";
       var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
-      const linkslist = input.match(urlPattern);
+      const linkslist = body.match(urlPattern);
       for (var i = 0; i < linkslist.length; i++) {
         if (linkslist[i].includes(".png") || linkslist[i].includes(".jpg") == false) {
           body = body.replace(linkslist[i], '<a href="' + linkslist[i] + '">' + linkslist[i] + '</a>');
