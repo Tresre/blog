@@ -39,12 +39,19 @@ request.onload = function () {
       
       h3.textContent = (day + " " + hour[0] + ":" + hour[1] + "" + ampm);
 
-      const p = document.createElement('p');
-      p.textContent = linkify(post.body);
+      const p = document.createElement('p');   
+      body = post.body;
+      if (body.includes(".png") || body.includes(".jpg") == true) {
+    	var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
+    	body = body.replace(urlPattern, '');
+	const img = document.createElement('img');
+      	img.src = urlPattern;
+      }
+      p.textContent = body;
       
       const logo = document.createElement('img');
-      avatar = post.user.avatar_url
-	  logo.src = avatar;
+      avatar = post.user.avatar_url;
+      logo.src = avatar;
 
       container.appendChild(card);
       card.appendChild(h1);
@@ -52,6 +59,7 @@ request.onload = function () {
       card.appendChild(h2);
       card.appendChild(h3);
       card.appendChild(p);
+      if (img !== undefined) {card.appendChild(img);}
     });
   } else {
     const errorMessage = document.createElement('marquee');
