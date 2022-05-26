@@ -43,16 +43,31 @@ request.onload = function () {
       body = post.body;
       if (body.includes(".png") || body.includes(".jpg") == true) {
     	var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
+      	piclink = body.match(urlPattern);
     	body = body.replace(urlPattern, '');
-	const img = document.createElement('img');
-	const link = body.match(urlPattern);
-      	img.src = link[0];
+      } else {
+      	piclink = "";
       }
       p.textContent = body;
+      
+      const pic = document.createElement('img');
+      pic.src = piclink;
+      pic.style.position = "relative";
+      pic.style.display = "block";
+      pic.style.width = "70%";
+      pic.style.margin = "auto";
+      pic.style.borderRadius = "5px";
+      pic.style.marginBottom = "30px";
       
       const logo = document.createElement('img');
       avatar = post.user.avatar_url;
       logo.src = avatar;
+      logo.style.position = "relative";
+      logo.style.display = "block";
+      logo.style.width = "70px";
+      logo.style.borderRadius = "100px";
+      logo.style.marginLeft = "10px";
+      logo.style.top = "-73px";
 
       container.appendChild(card);
       card.appendChild(h1);
@@ -60,7 +75,7 @@ request.onload = function () {
       card.appendChild(h2);
       card.appendChild(h3);
       card.appendChild(p);
-      if (img !== undefined) {card.appendChild(img);}
+      if (piclink !== "") {card.appendChild(pic);}
     });
   } else {
     const errorMessage = document.createElement('marquee');
