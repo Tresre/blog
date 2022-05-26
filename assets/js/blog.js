@@ -1,3 +1,6 @@
+var blogOwner = "Tresre";
+
+
 var request = new XMLHttpRequest();
 request.open('GET', 'https://api.github.com/repos/Tresre/blog/issues', true);
 request.onload = function () {
@@ -5,7 +8,7 @@ request.onload = function () {
   var data = JSON.parse(this.response);
   if (request.status >= 200 && request.status < 400) {
     data.forEach(post => {
-      if (post.user.login !== "Tresre") {
+      if (post.user.login !== blogOwner) {
       	return;
       }
       const card = document.createElement('div');
@@ -106,6 +109,8 @@ function linkify(input) {
 var today = new Date();
 let year = today.getFullYear();
 document.getElementById("year").innerHTML = year;
+
+document.getElementById("blogowner").innerHTML = blogOwner;
 
 function autoScroll() {
   window.scrollTo({
