@@ -1,14 +1,14 @@
-var blogOwner = "Tresre";
+var blogOwnerUsername = "Tresre";
 
 
 var request = new XMLHttpRequest();
-request.open('GET', 'https://api.github.com/repos/' + blogOwner + '/blog/issues', true);
+request.open('GET', 'https://api.github.com/repos/' + blogOwnerUsername + '/blog/issues', true);
 request.onload = function () {
 
   var data = JSON.parse(this.response);
   if (request.status >= 200 && request.status < 400) {
     data.forEach(post => {
-      if (post.user.login !== blogOwner) {
+      if (post.user.login !== blogOwnerUsername) {
       	return;
       }
       const card = document.createElement('div');
@@ -118,7 +118,7 @@ var today = new Date();
 let year = today.getFullYear();
 document.getElementById("year").innerHTML = year;
 
-document.title = (blogOwner + "'s Blog");
+document.title = (blogOwnerUsername + "'s Blog");
 
 function autoScroll() {
   window.scrollTo({
