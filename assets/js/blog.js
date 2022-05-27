@@ -47,9 +47,9 @@ request.onload = function () {
       hour[0] = (hour[0] - 4);
       if (hour[0] >= 12) {
       	var ampm = "pm";
-	if (hour[0] > 12) {
+		if (hour[0] > 12) {
           hour[0] = (hour[0] - 12);
-	}
+		}
       } else {
       	var ampm = "am";
       }
@@ -59,35 +59,40 @@ request.onload = function () {
 
       const p = document.createElement('p');   
       body = post.body;
-      piclink = "";
       var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
       const linkslist = body.match(urlPattern);
       if (linkslist !== null) {
         for (var i = 0; i < (linkslist.length); i++) {
-	  var loopValue = String(linkslist[i]);
+          var loopValue = String(linkslist[i]);
           if (loopValue.includes(".png") || loopValue.includes(".jpg") == true) {
-	    console.log("true");
-            piclink = linkslist[i];
-    	    body = body.replace(linkslist[i], '');
-          } else {
-	    console.log("false");
-            body = body.replace(linkslist[i], '<a href="' + linkslist[i] + '">' + linkslist[i] + '</a>');
-	  }
-	}
-      }
+            body = body.replace(linkslist[i], '');
+          }
+        }
+      } 
       p.textContent = body;
       card.appendChild(p);
       
-      const pic = document.createElement('img');
-      pic.src = piclink;
-      pic.style.position = "relative";
-      pic.style.display = "block";
-      pic.style.width = "70%";
-      pic.style.margin = "auto";
-      pic.style.borderRadius = "5px";
-      pic.style.marginBottom = "30px";
-      if (piclink !== "") {card.appendChild(pic);}
-      
+      if (linkslist !== null) {
+        for (var i = 0; i < (linkslist.length); i++) {
+	  	  var loopValue = String(linkslist[i]);
+          piclink = "";
+          if (loopValue.includes(".png") || loopValue.includes(".jpg") == true) {
+	    	console.log("true");
+            piclink = linkslist[i];
+    	    const pic = document.createElement('img');
+            pic.src = piclink;
+            pic.style.position = "relative";
+            pic.style.display = "block";
+            pic.style.maxWidth = "70%";
+            pic.style.minWidth = "30%";
+            pic.style.margin = "auto";
+            pic.style.marginTop = "-10px";
+            pic.style.borderRadius = "5px";
+            pic.style.marginBottom = "20px";
+      		if (piclink !== "") {card.appendChild(pic);}
+          }
+		}
+      }   
     });
   } else {
     const errorMessage = document.createElement('marquee');
