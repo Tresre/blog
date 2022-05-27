@@ -2,7 +2,7 @@ var blogOwner = "Tresre";
 
 
 var request = new XMLHttpRequest();
-request.open('GET', 'https://api.github.com/repos/Tresre/blog/issues', true);
+request.open('GET', 'https://api.github.com/repos/' + blogOwner + '/blog/issues', true);
 request.onload = function () {
 
   var data = JSON.parse(this.response);
