@@ -47,9 +47,9 @@ request.onload = function () {
       hour[0] = (hour[0] - 4);
       if (hour[0] >= 12) {
       	var ampm = "pm";
-		if (hour[0] > 12) {
+      	if (hour[0] > 12) {
           hour[0] = (hour[0] - 12);
-		}
+      	}
       } else {
       	var ampm = "am";
       }
@@ -74,10 +74,9 @@ request.onload = function () {
       
       if (linkslist !== null) {
         for (var i = 0; i < (linkslist.length); i++) {
-	  	  var loopValue = String(linkslist[i]);
+          var loopValue = String(linkslist[i]);
           piclink = "";
           if (loopValue.includes(".png") || loopValue.includes(".jpg") == true) {
-	    	console.log("true");
             piclink = linkslist[i];
     	    const pic = document.createElement('img');
             pic.src = piclink;
@@ -89,10 +88,10 @@ request.onload = function () {
             pic.style.marginTop = "-10px";
             pic.style.borderRadius = "5px";
             pic.style.marginBottom = "20px";
-      		if (piclink !== "") {card.appendChild(pic);}
+            if (piclink !== "") {card.appendChild(pic);}
           }
-		}
-      }   
+        }
+      }
     });
   } else {
     const errorMessage = document.createElement('marquee');
