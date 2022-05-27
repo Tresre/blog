@@ -62,7 +62,7 @@ request.onload = function () {
       piclink = "";
       var urlPattern = /\b(?:https?|ftp):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*[a-z0-9-+&@#\/%=~_|]/gim;
       const linkslist = body.match(urlPattern);
-      if (linkslist !== undefined) {
+      if (linkslist !== null) {
         for (var i = 0; i < (linkslist.length); i++) {
 	  var loopValue = String(linkslist[i]);
           if (loopValue.includes(".png") || loopValue.includes(".jpg") == true) {
