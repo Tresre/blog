@@ -53,6 +53,14 @@ h3 {
 }
 .container {
   padding-top: 120px;
+  background-color: #010409;  
+  width: 75%;
+  margin: auto;
+  padding: 50px;
+  padding-top: 120px;
+  border-radius: 10px;
+  min-width: 350px;
+  max-width: 750px;
 }
 .card {
   display: block;
